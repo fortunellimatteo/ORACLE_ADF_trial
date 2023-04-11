@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EmployeeView"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full">
+  <ViewAccessor
+    Name="EmployeeView1"
+    ViewObjectName="model.EmployeeView"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="DepartmentView1"
+    ViewObjectName="model.DepartmentView"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_IdEmployee"
+    ListVOName="DepartmentView1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="IdEmployee"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="IdDepartment"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="NameDepartment"/>
+      <Item Value="Fromdate"/>
+      <Item Value="Todate"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="Employee"
+    Entity="model.Employee"/>
+  <ViewAttribute
+    Name="IdEmployee"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="IdEmployee"
+    EntityUsage="Employee"
+    AliasName="ID_EMPLOYEE"
+    LOVName="LOV_IdEmployee">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="NameEmployee"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="NameEmployee"
+    EntityUsage="Employee"
+    AliasName="NAME_EMPLOYEE"/>
+  <ViewAttribute
+    Name="MailDepartment"
+    PrecisionRule="true"
+    EntityAttrName="MailDepartment"
+    EntityUsage="Employee"
+    AliasName="MAIL_DEPARTMENT"/>
+  <ViewAttribute
+    Name="NumberCell"
+    PrecisionRule="true"
+    EntityAttrName="NumberCell"
+    EntityUsage="Employee"
+    AliasName="NUMBER_CELL"/>
+  <ViewAttribute
+    Name="NameBadge"
+    PrecisionRule="true"
+    EntityAttrName="NameBadge"
+    EntityUsage="Employee"
+    AliasName="NAME_BADGE"/>
+  <ViewAttribute
+    Name="IdDepartment"
+    PrecisionRule="true"
+    EntityAttrName="IdDepartment"
+    EntityUsage="Employee"
+    AliasName="ID_DEPARTMENT"/>
+  <ViewLinkAccessor
+    Name="DepartmentView"
+    ViewLink="model.DepEmpViewLink"
+    Type="oracle.jbo.server.ViewRowImpl"
+    Reversed="true"
+    IsUpdateable="false"/>
+</ViewObject>

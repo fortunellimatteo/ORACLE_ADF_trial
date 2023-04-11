@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Department"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="DEPARTMENT"
+  AliasName="Department"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="IdDepartment"
+    IsNotNull="true"
+    Precision="10"
+    Scale="0"
+    ColumnName="ID_DEPARTMENT"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="DEPARTMENT"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="NameDepartment"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="NAME_DEPARTMENT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DEPARTMENT"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Fromdate"
+    ColumnName="FROMDATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="DEPARTMENT"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="Todate"
+    ColumnName="TODATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="DEPARTMENT"
+    PrimaryKey="true"/>
+  <AccessorAttribute
+    Name="Employee"
+    Association="model.DepEmpAss"
+    AssociationEnd="model.DepEmpAss.Employee"
+    AssociationOtherEnd="model.DepEmpAss.Department"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="DepartmentPrimaryKey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="DEPARTMENT_PRIMARY_KEY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.Department.IdDepartment"/>
+      <Item Value="model.Department.NameDepartment"/>
+      <Item Value="model.Department.Fromdate"/>
+      <Item Value="model.Department.Todate"/>
+    </AttrArray>
+  </Key>
+</Entity>

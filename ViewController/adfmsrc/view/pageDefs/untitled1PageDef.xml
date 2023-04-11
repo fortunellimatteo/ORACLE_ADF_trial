@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="untitled1PageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="DepartmentView1" RangeSize="25" DataControl="AppModuleDataControl" id="DepartmentView1Iterator"/>
+    <searchRegion Criteria="Dep_idDepFromDate" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="DepartmentView1Iterator" id="DepidDepFromDateQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="DepartmentView1Iterator" id="DepartmentView1">
+      <nodeDefinition DefName="model.DepartmentView" Name="DepartmentView10">
+        <AttrNames>
+          <Item Value="IdDepartment"/>
+          <Item Value="NameDepartment"/>
+          <Item Value="Fromdate"/>
+          <Item Value="Todate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

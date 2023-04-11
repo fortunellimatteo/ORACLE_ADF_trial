@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="untitled1.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGroupLayout layout="vertical" id="pgl1">
+                <af:panelHeader text="Department" id="ph1">
+                    <af:query id="qryId1" headerText="Search" disclosed="true"
+                              value="#{bindings.DepidDepFromDateQuery.queryDescriptor}"
+                              model="#{bindings.DepidDepFromDateQuery.queryModel}"
+                              queryListener="#{bindings.DepidDepFromDateQuery.processQuery}"
+                              queryOperationListener="#{bindings.DepidDepFromDateQuery.processQueryOperation}"
+                              resultComponentId="::resId1"/>
+                </af:panelHeader>
+                <af:table value="#{bindings.DepartmentView1.collectionModel}" var="row"
+                          rows="#{bindings.DepartmentView1.rangeSize}"
+                          emptyText="#{bindings.DepartmentView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.DepartmentView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.DepartmentView1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.DepartmentView1.rangeSize}"
+                          filterModel="#{bindings.DepidDepFromDateQuery.queryDescriptor}" filterVisible="true"
+                          queryListener="#{bindings.DepidDepFromDateQuery.processQuery}" varStatus="vs" id="resId1">
+                    <af:column sortProperty="#{bindings.DepartmentView1.hints.IdDepartment.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.DepartmentView1.hints.IdDepartment.label}"
+                               id="resId1c1">
+                        <af:outputText value="#{row.IdDepartment}"
+                                       shortDesc="#{bindings.DepartmentView1.hints.IdDepartment.tooltip}" id="ot1">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.DepartmentView1.hints.IdDepartment.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.DepartmentView1.hints.NameDepartment.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.DepartmentView1.hints.NameDepartment.label}"
+                               id="resId1c2">
+                        <af:outputText value="#{row.NameDepartment}"
+                                       shortDesc="#{bindings.DepartmentView1.hints.NameDepartment.tooltip}" id="ot2"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.DepartmentView1.hints.Fromdate.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.DepartmentView1.hints.Fromdate.label}"
+                               id="resId1c3">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.DepidDepFromDateQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.Fromdate.value}"
+                                          id="id1">
+                                <af:convertDateTime pattern="#{bindings.DepartmentView1.hints.Fromdate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.Fromdate}"
+                                       shortDesc="#{bindings.DepartmentView1.hints.Fromdate.tooltip}" id="ot3">
+                            <af:convertDateTime pattern="#{bindings.DepartmentView1.hints.Fromdate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.DepartmentView1.hints.Todate.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.DepartmentView1.hints.Todate.label}"
+                               id="resId1c4">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.DepidDepFromDateQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.Todate.value}"
+                                          id="id2">
+                                <af:convertDateTime pattern="#{bindings.DepartmentView1.hints.Todate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:outputText value="#{row.Todate}"
+                                       shortDesc="#{bindings.DepartmentView1.hints.Todate.tooltip}" id="ot4">
+                            <af:convertDateTime pattern="#{bindings.DepartmentView1.hints.Todate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                </af:table>
+            </af:panelGroupLayout>
+        </af:form>
+    </af:document>
+</f:view>
