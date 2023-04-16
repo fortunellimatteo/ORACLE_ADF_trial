@@ -1,0 +1,33 @@
+				ORACLE - ViewController
+
+Per creare delle pagine jspx va inserita una view nel file adf-config (qua ci sono tutte le pagine che comandano le regioni).
+Le regioni vanno create attraverso i task-flow, i task flow vanno creati nella cartella page flow inserendo view e collegandole
+tramite le freccie (le freccie corrispondono ad un metodo che dato ad un bottone o link ti cambia pagina).
+Ci sono anche le dynamic region ( da utilizzare chiaramente quando si hanno più di 2 task flow),
+basta trascinare il task flow nella pagina jspx e scegliere invece che region, dynamic region.
+Si può passare da una regione ad una pagina jspx, semplicemente inserendo una parent action, va inserito il metodo della
+freccina del file adfc-config che va a finire nella pagina successiva nel metodo della parent action PARENT OUTCOME.
+
+Si possono passare valori tramite pagine jspx e regioni, si deve definire la prima variabile sulla jspx (esempio):
+#{pageFlowScope.customer}
+successivamente si va a definire nel bindings della pagina jspx questa variaible, cliccando sul task flow che si vuole nel tab 
+executebles, si apre a destra una pagina con un altro tab parameters, nella tabellaina inserire:
+id: inputParameter1     value: #{pageFlowScope.customer}
+poi andando sul task-flow corretto a destra c'è una pagina con il tab parameters, aggiungi la
+id: inputParameter1     value: #{pageFlowScope.customerInTF}   required true
+questa variabile sarà utilizzabile in tutte le pagine del task flow : #{pageFlowScope.customerInTF}
+
+Sono molto importanti nelle pagine jspx quando si importa una regione i metodi REFRESH e ACTIVATION, basta andare nel
+binsing della pagina jspx, andare sul tab executebles e cliccare sul task-flow importato.
+il refresh permette di aggiornare la pagina per refreshare variabili  o quant'altro nella mia app impostato a ifNeeded, altrimenti si 
+può anche inserire una condizione del tipo: #{pageFlowScope.customer != null}
+il metodo activation fa le stesse cose e si può mettere anche con delle condizioni impostando la tendina in conditional.
+
+passare dati tramite task flow ?????
+
+tu puoi creare un eccezione nei task flow, implementando un metodo che crea un eccezione nell'appModule e
+ condividendolo nell'interfaccia, successivamente troverai il metodo nel data controls e lo puoi inserire nel task flow facendo
+solamente un drag and drop dal metodo al TF.
+
+Si possono fare anche metodi passando da una pagina all'altra, si crea il metodo e si mette nell'interfaccia  dell'appModule poi
+si inserisce nel task flow e si collega fra 2 view, passando da una pagina al'altra vedrai che il metodo si esegue.

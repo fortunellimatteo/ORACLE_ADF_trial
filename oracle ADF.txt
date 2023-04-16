@@ -1,0 +1,23 @@
+https://www.youtube.com/watch?v=DBHINcvRE10
+https://www.oracle.com/tools/downloads/jdev-v12212-downloads.html
+https://docs.oracle.com/cd/E53569_01/tutorials/tut_rich_app_alta/tut_rich_app_alta_1.html#overview
+
+per accedere al DB ORACLE: sqlplus /nolog
+			CONNECT SYS AS SYSDBA
+https://library.netapp.com/ecmdocs/ECMP12471543/html/GUID-287BC8BA-B8B6-4D67-804E-880B65D30B68.html
+> sqlplus /nolog
+> connect sys / as sysdba
+> alter session set "_oracle_script"=true;
+> create user user1 identified by 1;
+https://stackoverflow.com/questions/19650747/how-to-grant-grant-create-session-privilege
+https://localhost:5500/em/login
+https://www.youtube.com/watch?v=fgh2o4hveDk
+
+
+
+
+corso adf oracle
+https://www.youtube.com/watch?v=pgv2zWCssDA&list=PLp0ed20U4R4jXC_U-4hGTEQlT5C7liRFN&index=29
+
+user oracle db: userfortu
+password oracle db:passfortu

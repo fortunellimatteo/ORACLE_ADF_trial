@@ -1,0 +1,31 @@
+	        			ORACLE ADF - model
+
+Per rappresentare una tabella crea un Entity Object, per vedere i valori al suo interno
+ed esporla al ViewController crea una View Object.
+
+- per le EO si possono fare tante come come le validazioni (che puoi inserire nel tab validation rules
+oppure nella classe java rispettiva all'EO), ci sono anche le declarative validation (in general nel tab 
+alternative key aggiungi il campo da controllare, poi vai su tab business rules e click destro su Entity
+validators, aggiungi nuovo e scegli uniqueKey, imposta il mess di errore e basta)
+, business logic group, puoi impostare le variabili come 
+vuoi (per esmepio generare automaticamente la primary key)
+
+CREA LA SEQUENZA E RICHIAMALA NEL TRIGGER (il trigger dice che ad ogni inserimento nella tb indicata
+si crea il numero per quella chiave)
+
+create or replace NONEDITIONABLE TRIGGER TRIGGER1 
+BEFORE INSERT ON JOB
+FOR EACH ROW BEGIN
+  if :new.sequenza_job is null or :new.sequenza_job<0 then
+  select sequence1.nextval into :new.sequenza_job from dual;
+  end if;
+END;
+
+- per le VO possiamo impostare la nostra query base, successivamente possiamo impostare i view 
+criteria (non sono altro che delle condizioni che puoi applicare o meno nella view, possono 
+essere richiamati da pagina jsp trascinandoli dal tab data control alla pagina jsp), possiamo 
+creare campi in più addizionandoli o concatenandoli insieme (tab details->in fondo a destra c'è 
+expression, puoi unirli facendone uno solo), puoi creare ViewLink o Association
+
+- AppModule, qua puoi insierire tutto quello che vuoi per quanto riguarda metodi insert upddate 
+o delete, per vederli li devi esporre nella sua interfaccia.
